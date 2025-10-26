@@ -1,0 +1,44 @@
+{
+	"geode": "4.8.0",
+	"gd": {
+		"win": "2.2074"
+	},
+	"id": "firee.soggify",
+	"name": "Soggify",
+	"version": "v1.0.0",
+	"developer": "Firee",
+	"description": "SOGs geometry dash",
+	"early-load": true,
+    "tags": ["modtober25", "joke", "offline", "utility", "offline", "customization", "interface"],
+	"resources": {
+		"sprites": [
+			"resources/*.png"
+		],
+		"files": [
+			"resources/sfx/*.ogg",
+			"resources/sfx/*.mp3",
+			"resources/music/*.mp3"
+		],
+		"spritesheets": {
+			"Nuke": [ "resources/nuke/*.png" ]
+		},
+		"fonts": {
+			"PGothic": {
+				"path": "resources/WNTLGPG.ttf",
+				"size": 128
+			}
+		}
+	},
+	"dependencies": {
+		"geode.node-ids": ">=v1.20.0",
+		"capeling.soggy-mod": ">=1.1.6"
+	},
+	"settings": {
+		"ery-mode": {
+			"name": "Disable",
+			"description": "Disables the mod completely.",
+			"type": "bool",
+			"default": false
+		}
+	}
+}

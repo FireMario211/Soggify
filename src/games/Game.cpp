@@ -3,15 +3,6 @@
 #include <defs/geode.hpp>
 
 bool Game::initGame(std::string name) {
-    /*if (!CCLayer::init()) return false;
-    auto director = cocos2d::CCDirector::sharedDirector();
-    auto winSize = director->getWinSize();
-    this->m_name = name;
-    setup();
-    this->setKeypadEnabled(true);
-    this->setTouchEnabled(true);
-    this->setKeyboardEnabled(true);
-    return true;*/
     m_name = name;
     if (this->initAnchored(380, 260)) {
         this->autorelease();

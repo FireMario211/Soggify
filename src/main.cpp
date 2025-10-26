@@ -149,7 +149,7 @@ $execute {
                         } else {
                             FMODAudioEngine::sharedEngine()->playEffect("s2962.ogg"_spr, 1, 0, GameManager::get()->m_sfxVolume);
                             //soggyDialog = DialogObject::create("soggy", "u really spent time doing that<d010>.<d010>.<d010>. ok <cy>sog</c> will reward you with <cy>1000 sog points</c>, and a <cr>harder mode</c> if you battle <cy>sog</c>, mow", 2, 0.8f, false, {255, 255, 255});
-                            soggyDialog = DialogObject::create("soggy", "u really spent time doing that<d010>.<d010>.<d010>. ok <cy>sog</c> will reward you with <cy>1000 sog points</c>, mow", 2, 0.8f, false, {255, 255, 255});
+                            soggyDialog = DialogObject::create("soggy", "u really spent time doing that<d010>.<d010>.<d010>. ok <cy>sog</c> will reward you with <cy>1000 sog points</c>, and also tell you to wait for a future update! mow", 2, 0.8f, false, {255, 255, 255});
                             soggyDialog->setTag(100425);
                             Mod::get()->setSavedValue("points", Mod::get()->getSavedValue<int>("points", 0) + 1000);
                             Mod::get()->setSavedValue("e03", true);

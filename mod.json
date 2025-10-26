@@ -5,11 +5,15 @@
 	},
 	"id": "firee.soggify",
 	"name": "Soggify",
-	"version": "v1.0.0",
+	"version": "v1.0.0-beta.1",
 	"developer": "Firee",
 	"description": "SOGs geometry dash",
 	"early-load": true,
-    "tags": ["modtober25", "joke", "offline", "utility", "offline", "customization", "interface"],
+    "links": {
+        "community": "https://discord.gg/XGBMVVvJ7J",
+        "source": "https://github.com/FireMario211/Soggify"
+    },
+    "tags": ["modtober25", "joke", "offline", "utility", "universal", "offline", "customization", "interface"],
 	"resources": {
 		"sprites": [
 			"resources/*.png"

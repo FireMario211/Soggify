@@ -1,6 +1,5 @@
 #include "SoggifyMenuLayer.hpp"
 #include "Geode/ui/Popup.hpp"
-#include "NukeLayer.hpp"
 #include "QuestsPopup.hpp"
 #include "ShopLayer.hpp"
 #include <games/MGPopup.hpp>

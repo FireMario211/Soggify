@@ -32,11 +32,6 @@ bool PongGame::setup() {
 
     //228, 47, 66
     //232, 83, 103
-    /*auto line = BreakLine::create(180, 2.f, {0.89f, 0.18f, 0.258f, 1.f});
-    line->setAnchorPoint({0.5, 0.5});
-    auto lineShadow = BreakLine::create(180, 4.f, {0.79f, 0.08f, 0.158f, 1.f});
-    lineShadow->setAnchorPoint({0.5, 0.5});*/
-
     auto line = BreakLine::create(180, 2.f);
     line->setAnchorPoint({0.5, 0.5});
 

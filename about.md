@@ -6,7 +6,7 @@ The mod that <cy>sogs</c> the entirety of <cg>Geometry Dash!</c>
 
 However! This mod is a progression mod, you won't get the full experience automatically! You must gain <cy>Sog Points</c> by <cb>completing quests</c> or <cp>playing sog-themed mini games</c>! But it should be VERY easy... definitely.
 
-<cy>THIS MOD ONLY WORKS ON WINDOWS FOR NOW</c> since Modtober
+<cy>THIS MOD ONLY WORKS ON WINDOWS FOR NOW</c> since Modtober, and it's beta because there might be bugs!
 also this mod <cr>MAY NOT BE COMPATIBLE WITH OTHER MODS!</c> As it might crash because mod conflicts...
 
 There are still <co>some features</c> that haven't been implemented yet! Please wait for future updates for more features like mobile support because this mod isn't supported on mobile devices yet...

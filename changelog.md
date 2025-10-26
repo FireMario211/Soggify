@@ -1,2 +1,2 @@
-# 1.0.0
-- sog
+# v1.0.0-beta.1
+- sog release

@@ -1,20 +1,5 @@
 #pragma once
 
-// class ShopLayer : public geode::Popup<> {
-//     protected:
-//         bool setup() override;
-//     public:
-//         static ShopLayer* create() {
-//             auto ret = new ShopLayer();
-//             if (ret->initAnchored(260.f, 240.f)) {
-//                 ret->autorelease();
-//                 return ret;
-//             }
-//             delete ret;
-//             return nullptr;
-//         }
-// };
-
 class ShopLayer : public cocos2d::CCLayer {
 protected:
     cocos2d::CCMenu* m_buttonMenu;

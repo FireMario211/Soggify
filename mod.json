@@ -13,7 +13,7 @@
         "community": "https://discord.gg/XGBMVVvJ7J",
         "source": "https://github.com/FireMario211/Soggify"
     },
-    "tags": ["modtober25", "joke", "offline", "utility", "universal", "offline", "customization", "interface"],
+    "tags": ["modtober25", "joke", "universal", "offline", "customization", "interface"],
 	"resources": {
 		"sprites": [
 			"resources/*.png"

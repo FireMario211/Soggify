@@ -3,14 +3,21 @@
 #include <vector>
 #include "geode.hpp"
 
+struct ShopSettings {
+    uint32_t id;
+    std::string name;
+    std::string desc;
+    int defaultValue; // if its bool then its casted... ok
+    uint8_t type = 0; // 0 = bool, 1 = int
+};
+
 struct ShopItem {
     uint32_t id;
     std::string name;
     std::string desc;
     uint32_t price;
     uint32_t categoryId;
-    cocos2d::CCPoint scaleMini;
-    cocos2d::CCPoint scaleLarge;
+    //std::vector<ShopSettings> settings;
 };
 
 struct ShopCategory {

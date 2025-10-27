@@ -29,7 +29,7 @@ class $modify(SoggifyCCSprite, CCSprite) {
         ret->addChild(sog);
         return ret;
     }
-    static CCSprite* createWithSpriteFrameName(char const* name) {
+    /*static CCSprite* createWithSpriteFrameName(char const* name) {
         auto ret = CCSprite::createWithSpriteFrameName(name);
         if (ret == nullptr) return ret;
         return ret;
@@ -42,7 +42,7 @@ class $modify(SoggifyCCSprite, CCSprite) {
         sog->setAnchorPoint({0, 0});
         ret->addChild(sog);
         return ret;
-    }
+    }*/
 };
 /*
 class $modify(SoggifyCCScale9Sprite, CCScale9Sprite) {

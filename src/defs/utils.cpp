@@ -21,8 +21,7 @@ std::vector<ShopItem> s_items = {
         "sog name",
         "Sogs the menu title!",
         0,
-        1,
-        {}
+        1
     },
     {
         2,
@@ -48,7 +47,7 @@ std::vector<ShopItem> s_items = {
     {
         5,
         "sog rain",
-        "<cb>ITS RAINING SOG</c>",
+        "<cb>ITS RAINING SOG</c> (go to mod settings to change settings for this)",
         250,
         3
     },
@@ -111,7 +110,6 @@ std::vector<ShopItem> s_items = {
     },
 };
 std::vector<ShopItem> s_itemsBuf = {};
-
 
 std::vector<Quest> s_quests = {
     {

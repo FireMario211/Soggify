@@ -22,18 +22,6 @@ class $modify(PlayerObject) {
 };
 
 class $modify(SimplePlayer) {
-    /*bool init(int p0) {
-        if (!SimplePlayer::init(p0)) return false;
-        sogutils::sog(m_firstLayer, {0.5, 0.5});
-        sogutils::sog(m_secondLayer, {0.5, 0.5});
-        sogutils::sog(m_birdDome, {0.5, 0.5});
-        sogutils::sog(m_outlineSprite, {0.5, 0.5});
-        sogutils::sog(m_detailSprite, {0.5, 0.5});
-        sogutils::sog(m_robotSprite, {0.5, 0.5});
-        sogutils::sog(m_spiderSprite, {0.5, 0.5});
-
-        return true;
-    }*/
     void updatePlayerFrame(int p0, IconType p1) {
         SimplePlayer::updatePlayerFrame(p0,p1);
         if (Mod::get()->getSettingValue<bool>("ery-mode")) return;

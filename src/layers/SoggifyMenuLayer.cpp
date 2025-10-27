@@ -168,7 +168,13 @@ bool SoggifyMenuLayer::init() {
                     FMODAudioEngine::sharedEngine()->playEffectAdvanced("s2962.ogg"_spr, 1, 0, GameManager::get()->m_sfxVolume, 1.005f, true, false, 0, 0, 0, 0, false, 0, false, true, 0, 0, 0, 0);
                     break;
             }
-            DialogObject* soggyDialog = DialogObject::create("soggy", dialogues[rInd], 2, 1.0f, false, {255, 255, 255});
+            DialogObject* soggyDialog;
+            if (!Mod::get()->hasSavedValue("new02")) {
+                soggyDialog = DialogObject::create("soggy", "mow<d060> here is a hint to get more <cy>points</c>,<d030> you have <cy>Soggy Mod</c>,<d060> <cg>go to it</c>!!!", 2, 1.0f, false, {255, 255, 255});
+                Mod::get()->setSavedValue("new02", true);
+            } else {
+                soggyDialog = DialogObject::create("soggy", dialogues[rInd], 2, 1.0f, false, {255, 255, 255});
+            }
             soggyDialog->setTag(100125);
             dialogArr->addObject(soggyDialog);
             DialogLayer* dialogLayer = DialogLayer::createWithObjects(dialogArr, 2);

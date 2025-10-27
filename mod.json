@@ -1,19 +1,20 @@
 {
 	"geode": "4.8.0",
 	"gd": {
-		"win": "2.2074"
+		"win": "2.2074",
+		"mac": "2.2074"
 	},
 	"id": "firee.soggify",
 	"name": "Soggify",
-	"version": "v1.0.0-beta.1",
+	"version": "v1.0.0-beta.2",
 	"developer": "Firee",
 	"description": "SOGs geometry dash",
 	"early-load": true,
-    "links": {
-        "community": "https://discord.gg/XGBMVVvJ7J",
-        "source": "https://github.com/FireMario211/Soggify"
-    },
-    "tags": ["modtober25", "joke", "universal", "offline", "customization", "interface"],
+	"links": {
+		"community": "https://discord.gg/XGBMVVvJ7J",
+		"source": "https://github.com/FireMario211/Soggify"
+	},
+	"tags": ["modtober25", "joke", "universal", "offline", "customization", "interface"],
 	"resources": {
 		"sprites": [
 			"resources/*.png"
@@ -43,6 +44,29 @@
 			"description": "Disables the mod completely.",
 			"type": "bool",
 			"default": false
+		},
+		"sog-rain-section": {
+			"name": "Sog Rain",
+			"description": "This category is for the <cy>Sog Rain</c> item.",
+			"type": "title"
+		},
+		"sog-rain-count": {
+			"name": "Count",
+			"description": "How many <cy>Sogs</c> should rain!",
+			"type": "int",
+			"default": 200
+		},
+		"sog-rain-gravity": {
+			"name": "Gravity",
+			"description": "How fast <cy>Sog</c> should fall!",
+			"type": "int",
+			"default": -600
+		},
+		"sog-rain-scale": {
+			"name": "Scale",
+			"description": "How big <cy>Sog</c> should be!",
+			"type": "int",
+			"default": 20
 		}
 	}
 }

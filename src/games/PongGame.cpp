@@ -168,7 +168,6 @@ void PongGame::normalizeBallVelocityToSpeed() {
 
 void PongGame::update(float dt) {
     CCLayer::update(dt);
-
     float move = 0.f;
     if (m_holdLeft) move -= 1.f;
     if (m_holdRight) move += 1.f;
@@ -187,7 +186,7 @@ void PongGame::update(float dt) {
     float dx = bx - topX;
     if (fabsf(dx) > 2.0f) {
         float sign = (dx > 0) ? 1.f : -1.f;
-        float aiStep = m_aiMaxSpeed * dt;
+        float aiStep = ((m_playerScore > 25) ? m_aiMaxSpeed + 55.f : m_aiMaxSpeed) * dt;
         float step = std::min(aiStep, fabsf(dx));
         topX += sign * step;
         float halfW = m_paddleWidth * 0.5f;
@@ -264,7 +263,7 @@ void PongGame::update(float dt) {
 
 void PongGame::onScore(bool playerScored) {
     FMODAudioEngine::sharedEngine()->playEffect("chest07.ogg", 1, 0, GameManager::get()->m_sfxVolume);
-    if (playerScored) {
+    if (rand() % 2 == 1) { //playerScored
         m_ballSpeed = std::min(m_maxSpeedClamp, m_ballSpeed * 1.05f);
         resetBall(false);
     } else {

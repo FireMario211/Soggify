@@ -24,7 +24,7 @@ class PongGame : public Game {
         cocos2d::CCPoint m_ballVel;
         float m_ballSpeed = 170.f;
         float m_baseBallSpeed = 170.f;
-        float m_maxSpeedClamp = 500.f;
+        float m_maxSpeedClamp = 490.f;
 
         float m_aiMaxSpeed = 120.f;
 

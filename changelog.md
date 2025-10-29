@@ -1,3 +1,7 @@
+# v1.0.0-beta.3
+- fix circle being too small or too big on different texture qualities
+- added ~~gambling~~ spin the wheel!
+
 # v1.0.0-beta.2
 - added mac support!
 - added a hint for extra sog points

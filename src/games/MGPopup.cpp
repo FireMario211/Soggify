@@ -2,11 +2,12 @@
 #include "Game.hpp"
 #include "PongGame.hpp"
 #include "SnakeGame.hpp"
+#include "SpinWheelGame.hpp"
 #include <layers/SoggifyMenuLayer.hpp>
 #include <defs/utils.hpp>
 
 //std::vector<std::string> s_games = {"Pong", "Snake", "Flappy Sog"};
-std::vector<std::string> s_games = {"Pong", "Snake"}; // was going to add "Spin Wheel" but i ran out of time, so maybe if i have enough time idk
+std::vector<std::string> s_games = {"Pong", "Snake", "Spin Wheel"}; // was going to add "Spin Wheel" but i ran out of time, so maybe if i have enough time idk
 
 bool MGPopup::setup() {
     this->setTitle("minigames!");
@@ -24,7 +25,8 @@ bool MGPopup::setup() {
                     case 1: // Snake
                         game = SnakeGame::create();
                         break;
-                    case 2: // Flappy Sog
+                    case 2: // Spin Wheel
+                        game = SpinWheelGame::create();
                         break;
                 }
                 if (game == nullptr) return FLAlertLayer::create("Error", "Couldn't get <cy>mini game</c>, please report this to the developer of this mod", "OK")->show();

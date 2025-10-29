@@ -47,7 +47,7 @@ bool PongGame::setup() {
     m_bg->addChildAtPosition(line2, Anchor::Center, {0, 5});
     m_bg->addChildAtPosition(line3, Anchor::Center, {0, -5});
 
-    Build<CCSprite>::create("circle.png").parentAtPos(m_bg, Anchor::Center).store(m_ball);
+    Build<CCSprite>::create("circle.png"_spr).parentAtPos(m_bg, Anchor::Center).store(m_ball);
 
     auto gm = GameManager::sharedState();
     if (!gm) return false;

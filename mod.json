@@ -6,7 +6,7 @@
 	},
 	"id": "firee.soggify",
 	"name": "Soggify",
-	"version": "v1.0.0-beta.2",
+	"version": "v1.0.0-beta.3",
 	"developer": "Firee",
 	"description": "SOGs geometry dash",
 	"early-load": true,

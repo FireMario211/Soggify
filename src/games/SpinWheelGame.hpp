@@ -50,7 +50,7 @@ public:
         }
         cocos2d::ccGLBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         glLineWidth(5.0f);
-        cocos2d::ccDrawColor4F(0.0f, 0.0f, 0.0f, 1.0f);
+        cocos2d::ccDrawColor4B(0, 0, 0, 255);
         cocos2d::ccDrawCircle(center, radius, 0, 100, false);
     }
 };

@@ -18,10 +18,10 @@ void SpinWheelGame::setRewards() {
                 reward = 0;
                 color = { 0.0f, 0.0f, 0.0f, 0.4f };
             } else if (type == 1) {
-                reward = - (10 + rand() % 40);
+                reward = - (50 + rand() % 40);
                 color = { 1.0f, 0.3f, 0.3f, 1.0f };
             } else {
-                reward = 10 + rand() % 90;
+                reward = 30 + rand() % 90;
                 color = { 0.3f, 1.0f, 0.3f, 1.0f };
             }
         }

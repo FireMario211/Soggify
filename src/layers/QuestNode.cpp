@@ -140,7 +140,7 @@ bool QuestNode::init(QuestsPopup* layer, uint8_t id, uint8_t index, bool withEnt
                     if (canClaim) {
                         int reward = sogutils::random_int(quest.reward[0], quest.reward[1]);
                         FMODAudioEngine::sharedEngine()->playEffect("highscoreGet02.ogg", 1, 0, GameManager::get()->m_sfxVolume);
-                        spawnParticles(reward);
+                        //spawnParticles(reward);
                         Mod::get()->setSavedValue("points", Mod::get()->getSavedValue<int>("points", 0) + reward);
                         if (Mod::get()->hasSavedValue("quests")) {
                             auto allQuests_t = sogutils::getQuests();

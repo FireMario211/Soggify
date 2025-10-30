@@ -1,3 +1,6 @@
+# v1.0.0-beta.4
+- temporarily disable quest effect as it was causing bugs
+
 # v1.0.0-beta.3
 - fix circle being too small or too big on different texture qualities
 - added ~~gambling~~ spin the wheel!

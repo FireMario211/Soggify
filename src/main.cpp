@@ -11,6 +11,13 @@ $on_mod(Loaded) {
 
 int step = -1;
 
+// TODO for fixing jitless:
+// fix DialogLayer::displayDialogObject (weird nullptr crash)
+// fix CCSprite::create
+// fix CCMenuItemSpriteExtra::create?
+// test Jumpscare
+// test GSM
+
 // ty cologne
 class $modify(SoggifyHookDL, DialogLayer) {
     void displayDialogObject(DialogObject* dialogObject) {

@@ -16,17 +16,7 @@ class $modify(SoggifyHookLL, LoadingLayer) {
         return true;
     }
 };
-
-$execute {
-    if (Loader::get()->isPatchless()) {
-        sogutils::toggleLayerHook("LoadingLayer::init", false);
-    }
-}
-
 $on_mod(Loaded) {
-    if (Loader::get()->isPatchless()) {
-        sogutils::toggleLayerHook("LoadingLayer::init", false);
-    }
     if (Mod::get()->hasSavedValue("quests")) {
         Mod::get()->getSaveContainer().erase("quests");
     }

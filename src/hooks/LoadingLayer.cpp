@@ -15,11 +15,13 @@ class $modify(SoggifyHookLL, LoadingLayer) {
             Mod::get()->setSavedValue("i_1", true);
         }
         if (Mod::get()->getSavedValue<bool>("i_1")) {
-            Loader::get()->queueInMainThread([this]() {
-                if (auto node = static_cast<CCSprite*>(getChildByID("gd-logo"))) {
-                    sogutils::sog(node);
-                }
-            });
+            if (!Loader::get()->isPatchless()) {
+                Loader::get()->queueInMainThread([this]() {
+                    if (auto node = static_cast<CCSprite*>(getChildByID("gd-logo"))) {
+                        sogutils::sog(node);
+                    }
+                });
+            }
         }
         return true;
     }

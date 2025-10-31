@@ -1,6 +1,7 @@
 # v1.0.0-beta.4
-- added mobile support
+- added mobile support (no jitless yet sorry)
 - temporarily disable quest effect as it was causing bugs
+- fixed bug where if you have a mini game quest, it wont add to the quest even if you do it
 - changed how spin the wheel works (now percentage based)
 
 # v1.0.0-beta.3

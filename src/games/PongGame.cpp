@@ -1,6 +1,6 @@
 #include "PongGame.hpp"
 #include "Geode/ui/BreakLine.hpp"
-#include <defs/geode.hpp>
+#include <defs/utils.hpp>
 #include <layers/SoggifyMenuLayer.hpp>
 
 // https://t3.ftcdn.net/jpg/06/11/20/08/360_F_611200865_oyq4lBwsNwk7xwA8J6OKF9P3xA6oUkso.jpg
@@ -326,6 +326,18 @@ void PongGame::onScore(bool playerScored) {
         Mod::get()->setSavedValue("points", Mod::get()->getSavedValue<int>("points", 0) + 10);
         if (auto menu = static_cast<SoggifyMenuLayer*>(this->getParent()->getChildByID("SoggifyMenuLayer"_spr))) {
             menu->updatePoints();
+        }
+        auto quests = Mod::get()->getSavedValue<std::vector<int>>("quests");
+        auto allQuests = sogutils::getQuests();
+        for (auto questID : quests) {
+            if (questID < 0 || questID > allQuests.size() - 1) continue; // ok when would this actually happen
+            auto quest = allQuests.at(questID);
+            auto value = Mod::get()->getSavedValue<int>(fmt::format("q_{}", questID), 0);
+            bool increaseValue = false;
+            if (quest.type == QuestType::MinigameP) {
+                log::debug("Increasing quest for {} (Pong) by +{} (before {})", questID, 1, value);
+                Mod::get()->setSavedValue(fmt::format("q_{}", questID), std::clamp(value + 1, 0, (int)quest.maxProgress));
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 // partly taken inspiration from googles own snake game, also THE INPUT BUFFERS ARE AMAZING so i added those too
 #include "SnakeGame.hpp"
-#include <defs/geode.hpp>
+#include <defs/utils.hpp>
 #include <layers/SoggifyMenuLayer.hpp>
 
 CCPoint SnakeGame::getPos(uint8_t x, uint8_t y) {
@@ -174,6 +174,18 @@ void SnakeGame::spawnFood() {
         Mod::get()->setSavedValue("points", Mod::get()->getSavedValue<int>("points", 0) + 1);
         if (auto menu = static_cast<SoggifyMenuLayer*>(this->getParent()->getChildByID("SoggifyMenuLayer"_spr))) {
             menu->updatePoints();
+        }
+        auto quests = Mod::get()->getSavedValue<std::vector<int>>("quests");
+        auto allQuests = sogutils::getQuests();
+        for (auto questID : quests) {
+            if (questID < 0 || questID > allQuests.size() - 1) continue; // ok when would this actually happen
+            auto quest = allQuests.at(questID);
+            auto value = Mod::get()->getSavedValue<int>(fmt::format("q_{}", questID), 0);
+            bool increaseValue = false;
+            if (quest.type == QuestType::MinigameS) { // StarMoon
+                log::debug("Increasing quest for {} (Snake) by +{} (before {})", questID, 1, value);
+                Mod::get()->setSavedValue(fmt::format("q_{}", questID), std::clamp(value + 1, 0, (int)quest.maxProgress));
+            }
         }
         this->setTitle(fmt::format("Snake ({} point{})", points, (points == 1) ? "" : "s"));
 

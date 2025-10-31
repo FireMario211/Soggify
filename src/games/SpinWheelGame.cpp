@@ -5,28 +5,34 @@
 void SpinWheelGame::setRewards() {
     m_rewards.clear();
     m_wheelColors.clear();
+    bool has_loss = false;
     for (int i = 0; i < m_numSectors; ++i) {
-        int type = rand() % 3;
+        int type = rand() % 100;
         int reward = 0;
         ccColor4F color;
-        if (rand() % 100 == 50) {
+        if (type < 5) {
             // GOLD GOLD GOLD
-            reward = 500;
+            reward = 30 + rand() % 61; // 30-90% win
             color = { 1.0f, 0.84f, 0.0f, 1.0f };
+        } else if (type < 50) {
+            reward = 0;
+            color = { 0.0f, 0.0f, 0.0f, 0.4f };
+        } else if (type < 60) {
+            reward = - (10 + rand() % 26); // 10-35% loss
+            color = { 1.0f, 0.3f, 0.3f, 1.0f };
+            has_loss = true;
         } else {
-            if (type == 0) {
-                reward = 0;
-                color = { 0.0f, 0.0f, 0.0f, 0.4f };
-            } else if (type == 1) {
-                reward = - (30 + rand() % 40);
-                color = { 1.0f, 0.3f, 0.3f, 1.0f };
-            } else {
-                reward = 50 + rand() % 90;
-                color = { 0.3f, 1.0f, 0.3f, 1.0f };
-            }
+            reward = 5 + rand() % 11; // 5-15% win
+            color = { 0.3f, 1.0f, 0.3f, 1.0f };
         }
         m_rewards.push_back(reward);
         m_wheelColors.push_back(color);
+    }
+    if (!has_loss) {
+        int randomIndex = rand() % (m_numSectors - 1);
+        m_rewards[randomIndex] = - (10 + rand() % 26);
+        m_wheelColors[randomIndex] = { 1.0f, 0.3f, 0.3f, 1.0f };
+        log::debug("Didn't have loss, adding one.");
     }
     if (m_wheel) {
         m_wheel->setColors(m_wheelColors);
@@ -159,10 +165,11 @@ void SpinWheelGame::onSpinComplete() {
     const float eps = 1e-6f;
     int sector = static_cast<int>(floorf((combined + eps) / sectorSize)) % m_rewards.size();
     if (sector < 0) sector += m_rewards.size();
-    int reward = m_rewards[sector];
+    int rewardPercent = m_rewards[sector];
+    int reward = (int)std::llround(Mod::get()->getSavedValue<int>("points", 0) * rewardPercent / 100.0);
     log::debug("wheelRotRaw={} rot={} combined={} sectSize={} sect={}", m_container->getRotation(), rot, combined, sectorSize, sector);
     if (reward > 0) { // YOU WON
-        if (reward >= 500) { // GOLD GOLD GOLD
+        if (rewardPercent >= 30) { // GOLD GOLD GOLD
             FLAlertLayer::create("GOLD GOLD GOLD", fmt::format("YOU WON <cy>{} SOG POINTS!!!</c>", reward).c_str(), "yay")->show();
             FMODAudioEngine::sharedEngine()->playEffect("highscoreGet02.ogg", 1, 0, GameManager::get()->m_sfxVolume);
             FMODAudioEngine::sharedEngine()->playEffect("gold01.ogg", 1, 0, GameManager::get()->m_sfxVolume);

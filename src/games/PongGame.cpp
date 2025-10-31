@@ -42,7 +42,6 @@ bool PongGame::setup() {
     line3->setAnchorPoint({0, 0.5});
     line3->setRotation(90);
 
-    //m_mainLayer->addChildAtPosition(lineShadow, Anchor::Center, {0, -10});
     m_bg->addChildAtPosition(line, Anchor::Center);
     m_bg->addChildAtPosition(line2, Anchor::Center, {0, 5});
     m_bg->addChildAtPosition(line3, Anchor::Center, {0, -5});
@@ -67,9 +66,54 @@ bool PongGame::setup() {
 
     Build<CCLabelBMFont>::create("0", "goldFont.fnt").alignment(CCTextAlignment::kCCTextAlignmentCenter).parentAtPos(m_bg, Anchor::Right, {40, 0}).store(m_opponentScoreLbl);
     Build<CCLabelBMFont>::create("Sog", "bigFont.fnt").scale(0.8f).alignment(CCTextAlignment::kCCTextAlignmentCenter).parentAtPos(m_bg, Anchor::Right, {40, -30});
+
+#ifndef GEODE_IS_DESKTOP
+    Build<CCSprite>::createSpriteName("PBtn_Move_001.png").store(m_leftBtn).parentAtPos(m_bg, Anchor::Left, {-30, -75});
+    Build<CCSprite>::createSpriteName("PBtn_Move_001.png").flipX(true).store(m_rightBtn).parentAtPos(m_bg, Anchor::Right, {30, -75});
+#endif
+
+    this->setTouchMode(ccTouchesMode::kCCTouchesOneByOne);
+    this->setTouchEnabled(true);
     return true;
 }
+#ifndef GEODE_IS_DESKTOP
+bool PongGame::ccTouchBegan(cocos2d::CCTouch *touch, cocos2d::CCEvent *p1) {
+    if (!Game::ccTouchBegan(touch,p1)) return false;
+    if (!(m_leftBtn && m_rightBtn)) return false;
+    auto touchPos = cocos2d::CCDirector::sharedDirector()->convertToGL(touch->getLocationInView());
+    auto nodeTouchPos = m_bg->convertToNodeSpace(touchPos);
+    if (m_leftBtn->boundingBox().containsPoint(nodeTouchPos)) {
+        m_leftBtn->setOpacity(150);
+        if (!m_started) {
+            scheduleUpdate();
+            m_started = true;
+        }
+        m_holdLeft = true;
+        m_holdRight = false;
+        return true;
+    } else if (m_rightBtn->boundingBox().containsPoint(nodeTouchPos)) {
+        m_rightBtn->setOpacity(150);
+        if (!m_started) {
+            scheduleUpdate();
+            m_started = true;
+        }
+        m_holdRight = true;
+        m_holdLeft = false;
+        return true;
+    } else {
+        return false;
+    }
+}
 
+void PongGame::ccTouchEnded(cocos2d::CCTouch *touch, cocos2d::CCEvent *p1) {
+    Game::ccTouchEnded(touch, p1);
+    if (!(m_leftBtn && m_rightBtn)) return;
+    m_holdLeft = false;
+    m_holdRight = false;
+    m_leftBtn->setOpacity(255);
+    m_rightBtn->setOpacity(255);
+}
+#endif
 void PongGame::resetBall(bool serveToPlayer) {
     m_ball->updateAnchoredPosition(Anchor::Center);
     m_ballSpeed = m_baseBallSpeed;

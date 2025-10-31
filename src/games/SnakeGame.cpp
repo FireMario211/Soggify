@@ -22,7 +22,11 @@ float SnakeGame::gridScale() {
 
 bool SnakeGame::setup() {
     Loader::get()->queueInMainThread([](){
-        FLAlertLayer::create("How to", "Move around by holding <cg>any of the arrow keys</c>!\nEach time <cy>Sog</c> eat an apple sog, you gain <cy>+1 Sog Point</c>!", "OK")->show();
+        #ifdef GEODE_IS_DESKTOP
+        FLAlertLayer::create("How to", "Move around by tapping <cg>any of the arrow keys</c> (or WASD)!\nEach time <cy>Sog</c> eat an apple sog, you gain <cy>+1 Sog Point</c>!", "OK")->show();
+        #else
+        FLAlertLayer::create("How to", "Move around by <cg>swiping</c> on the screen!\nEach time <cy>Sog</c> eat an apple sog, you gain <cy>+1 Sog Point</c>!", "OK")->show();
+        #endif
     });
     uint8_t s_grid = 20;
     CCSize s_cellSize = {205.f, 205.f};
@@ -47,6 +51,8 @@ bool SnakeGame::setup() {
     }
     // === Grid === //
     restart();
+    this->setTouchEnabled(true);
+    this->setTouchMode(ccTouchesMode::kCCTouchesOneByOne);
     return true;
 }
 

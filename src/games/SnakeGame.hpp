@@ -13,12 +13,33 @@ class SnakeGame : public Game {
         Direction m_dir = UP;
         std::deque<Direction> m_inputBuffer;
         const size_t INPUT_BUFFER_MAX = 3;
+        cocos2d::CCPoint m_touchStart;
 
         bool m_growing;
         float m_currentSpeed = 0.18f;
         float m_squareCWidth;
 
         bool setup() override;
+#ifndef GEODE_IS_DESKTOP
+        inline cocos2d::CCPoint getFirstTouchPos(cocos2d::CCTouch* t) {
+            return t ? t->getLocation() : ccp(0,0);
+        }
+        virtual bool ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) override {
+            if (!Game::ccTouchBegan(pTouch, pEvent)) return false;
+            m_touchStart = getFirstTouchPos(pTouch);
+            return true;
+        }
+        virtual void ccTouchEnded(cocos2d::CCTouch *touch, cocos2d::CCEvent *event) override {
+            Game::ccTouchEnded(touch, event);
+            cocos2d::CCPoint d = ccpSub(getFirstTouchPos(touch), m_touchStart);
+            if (fabsf(d.x) < 10.f && fabsf(d.y) < 10.f) return;
+            if (fabsf(d.x) > fabsf(d.y)) {
+                if (d.x > 0) tryChangeDirection(RIGHT); else tryChangeDirection(LEFT);
+            } else {
+                if (d.y > 0) tryChangeDirection(UP); else tryChangeDirection(DOWN);
+            }
+        }
+#endif
         void keyDown(cocos2d::enumKeyCodes key) override;
         cocos2d::CCPoint getPos(uint8_t x, uint8_t y);
         cocos2d::CCPoint getPos(cocos2d::CCPoint pos) {

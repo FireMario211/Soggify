@@ -35,7 +35,12 @@ class PongGame : public Game {
         float m_noScoreThreshold = 10.f;
         float m_speedRampFactor;
 
-
+#ifndef GEODE_IS_DESKTOP
+        cocos2d::CCSprite* m_leftBtn;
+        cocos2d::CCSprite* m_rightBtn;
+        bool ccTouchBegan(cocos2d::CCTouch *p0, cocos2d::CCEvent *p1) override;
+        void ccTouchEnded(cocos2d::CCTouch *p0, cocos2d::CCEvent *p1) override;
+#endif
         void onScore(bool playerScored);
         void increaseBallSpeed();
         void reflectOffPaddle(cocos2d::CCNode* paddle);

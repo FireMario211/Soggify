@@ -1,3 +1,6 @@
+# v1.0.0-beta.5
+- fix bug with jumpscare if you dont have "fast menu" enabled
+
 # v1.0.0-beta.4
 - added mobile support (no jitless yet sorry)
 - temporarily disable quest effect as it was causing bugs

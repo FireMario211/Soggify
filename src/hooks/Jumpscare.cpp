@@ -22,7 +22,7 @@ class $modify(CLCustom, CreatorLayer) {
 
 class $modify(LSLCustom, LevelSearchLayer) {   
     void step1() {
-        if ((rand() % 100) < 80) {
+        if ((rand() % 100) < 90) {
             m_searchInput->setString("68668045");
         } else {
             m_searchInput->setString("86407629");
@@ -70,6 +70,7 @@ class $modify(LILCustom, LevelInfoLayer) {
         CCAction* loopAction = nullptr;
     };
     void step1() {
+        CCDirector::sharedDirector()->setFastMenu(GameManager::get()->getGameVariable("0168"));
         auto MDM = MusicDownloadManager::sharedState();
         bool songDownloaded = MDM->isSongDownloaded(m_level->m_songID) || (m_level->m_songID == 0);
         if (!songDownloaded) return;
@@ -86,7 +87,7 @@ class $modify(LILCustom, LevelInfoLayer) {
         }
         if (m_fields->loopAction != nullptr) return;
         m_fields->loopAction = CCRepeatForever::create(CCSequence::create(
-            CCDelayTime::create(1.0F),
+            CCDelayTime::create(3.0F),
             CCCallFunc::create(this, callfunc_selector(LILCustom::step1)),
             nullptr
         ));
@@ -98,7 +99,7 @@ class $modify(LILCustom, LevelInfoLayer) {
         LevelInfoLayer::updateLabelValues();
         if (m_fields->loopAction != nullptr) return;
         m_fields->loopAction = CCRepeatForever::create(CCSequence::create(
-            CCDelayTime::create(0.5F),
+            CCDelayTime::create(1.0F),
             CCCallFunc::create(this, callfunc_selector(LILCustom::step1)),
             nullptr
         ));

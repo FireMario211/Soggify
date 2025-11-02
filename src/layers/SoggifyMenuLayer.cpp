@@ -80,6 +80,7 @@ class FunnyJumpscare : public CCNode {
 
 void SoggifyMenuLayer::jumpscare(float) {
     log::info("jumpscare");
+    CCDirector::sharedDirector()->setFastMenu(true);
     onClose();
     sogutils::toggleLayerHook("CreatorLayer::init", true);
     sogutils::toggleLayerHook("LevelSearchLayer::init", true);

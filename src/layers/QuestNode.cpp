@@ -9,7 +9,7 @@
 // play and beat a mini-game
 // (add some mini game conditions too idk)
 
-class ProgressBar : public cocos2d::CCLayer {
+class ProgressNode : public cocos2d::CCLayer {
     protected:
         cocos2d::CCSprite* m_bg;
         float m_currentProgress = 0.f;
@@ -58,8 +58,8 @@ class ProgressBar : public cocos2d::CCLayer {
             m_currentProgress = std::clamp(progress, 0.f, 100.f);
             m_bar->setScaleX(getScaleForBar(progress));
         }
-        static ProgressBar* create(float progress = 0.f, float scale = 0.7f, cocos2d::ccColor3B color = {0,255,0}, std::string text = "", float scaleX = 1.0f) {
-            auto ret = new ProgressBar();
+        static ProgressNode* create(float progress = 0.f, float scale = 0.7f, cocos2d::ccColor3B color = {0,255,0}, std::string text = "", float scaleX = 1.0f) {
+            auto ret = new ProgressNode();
             if (ret->init(scale, scaleX, progress, color, text)) {
                 ret->autorelease();
                 return ret;
@@ -127,7 +127,7 @@ bool QuestNode::init(QuestsPopup* layer, uint8_t id, uint8_t index, bool withEnt
     Build<CCScale9Sprite>::create(bgSpr)
         .contentSize(300, 70)
         .with([quest, progress, withEnter](CCScale9Sprite* node) { // because ProgressBar
-            auto bar = ProgressBar::create(((float)progress / (float)quest.maxProgress) * 100.f, 0.5f, {0, 255, 0}, fmt::format("{}/{}", progress, quest.maxProgress), 1.0f);
+            auto bar = ProgressNode::create(((float)progress / (float)quest.maxProgress) * 100.f, 0.5f, {0, 255, 0}, fmt::format("{}/{}", progress, quest.maxProgress), 1.0f);
             bar->setAnchorPoint({0, 0});
             node->addChildAtPosition(bar, Anchor::BottomLeft, {10, 12});
         })

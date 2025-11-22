@@ -102,7 +102,9 @@ class $modify(SoggifyHookML, MenuLayer) {
             menu->updateLayout();
         }
         if (Mod::get()->getSavedValue<bool>("i_1")) {
-            sogutils::sog(static_cast<CCSprite*>(this->getChildByID("main-title")));
+            if (this->getChildByID("main-title")) {
+                sogutils::sog(static_cast<CCSprite*>(this->getChildByID("main-title")));
+            }
         }
         // TODO: maybe have it hook CCMenuItemSpriteExtra to be a random button instead
         if (auto menu = typeinfo_cast<CCMenu*>(this->getChildByID("main-menu"))) {

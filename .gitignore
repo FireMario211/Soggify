@@ -65,6 +65,7 @@ build-*/
 
 # my own
 build.sh
+build-ios.sh
 compile_commands.json
 src/games/Battle.*
 src/games/Horror.*

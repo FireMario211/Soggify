@@ -98,9 +98,9 @@ class $modify(SoggifyHookDL, DialogLayer) {
 
 $execute {
     new EventListener<EventFilter<soggy_mod::OnSogLayer>>(+[](soggy_mod::OnSogLayer* e) {
-        if (!(!Mod::get()->hasSavedValue("e01") && !Mod::get()->hasSavedValue("e02") && !Mod::get()->hasSavedValue("e03"))) {
+        /*if (!(!Mod::get()->hasSavedValue("e01") && !Mod::get()->hasSavedValue("e02") && !Mod::get()->hasSavedValue("e03"))) {
             return ListenerResult::Propagate;
-        }
+        }*/
         if (Mod::get()->getSettingValue<bool>("ery-mode")) return ListenerResult::Propagate;
         if (step == -1) {
             step = 0;

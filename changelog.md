@@ -1,3 +1,6 @@
+# v1.0.0-beta.6
+- added jitless support
+
 # v1.0.0-beta.5
 - fix bug with jumpscare if you dont have "fast menu" enabled
 

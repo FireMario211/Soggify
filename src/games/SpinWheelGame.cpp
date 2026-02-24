@@ -170,6 +170,9 @@ void SpinWheelGame::onSpinComplete() {
     if (reward >= INT32_MAX) {
         reward = 10;
     }
+    if (reward <= -INT32_MAX) {
+        reward = -10;
+    }
     log::debug("wheelRotRaw={} rot={} combined={} sectSize={} sect={}", m_container->getRotation(), rot, combined, sectorSize, sector);
     if (reward > 0) { // YOU WON
         if (rewardPercent >= 30) { // GOLD GOLD GOLD

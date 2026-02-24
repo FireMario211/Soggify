@@ -163,7 +163,7 @@ void PongGame::reflectOffPaddle(CCNode* paddle) {
     normalizeBallVelocityToSpeed();
 }
 
-void PongGame::keyDown(cocos2d::enumKeyCodes key) {
+void PongGame::keyDown(cocos2d::enumKeyCodes key, double timestamp) {
     if (key == enumKeyCodes::KEY_Left || key == enumKeyCodes::CONTROLLER_Left || key == enumKeyCodes::KEY_ArrowLeft || key == enumKeyCodes::KEY_A) {
         if (!m_started) {
             scheduleUpdate();
@@ -182,9 +182,9 @@ void PongGame::keyDown(cocos2d::enumKeyCodes key) {
         m_holdLeft = false;
         return;
     }
-    Game::keyDown(key);
+    Game::keyDown(key, timestamp);
 }
-void PongGame::keyUp(cocos2d::enumKeyCodes key) {
+void PongGame::keyUp(cocos2d::enumKeyCodes key, double timestamp) {
     if (key == enumKeyCodes::KEY_Left || key == enumKeyCodes::CONTROLLER_Left || key == enumKeyCodes::KEY_ArrowLeft || key == enumKeyCodes::KEY_A) {
         m_holdLeft = false;
         return;
@@ -193,7 +193,7 @@ void PongGame::keyUp(cocos2d::enumKeyCodes key) {
         m_holdRight = false;
         return;
     }
-    Game::keyUp(key);
+    Game::keyUp(key, timestamp);
 }
 
 void PongGame::normalizeBallVelocityToSpeed() {

@@ -1,13 +1,13 @@
 #pragma once
-class MGPopup : public geode::Popup<> {
+class MGPopup : public geode::Popup {
     protected:
         cocos2d::CCMenu* m_gameMenu;
-        bool setup() override;
+        bool init() override;
     public:
         virtual void onClose(cocos2d::CCObject* sender) override;
         static MGPopup* create() {
             auto ret = new MGPopup();
-            if (ret->initAnchored(220, 160)) {
+            if (ret->init()) {
                 ret->autorelease();
                 return ret;
             }

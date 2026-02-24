@@ -97,7 +97,7 @@ class $modify(SoggifyHookDL, DialogLayer) {
 
 
 $execute {
-    new EventListener<EventFilter<soggy_mod::OnSogLayer>>(+[](soggy_mod::OnSogLayer* e) {
+    soggy_mod::OnSogLayer().listen([](soggy_mod::SogLayer* layer) {
         /*if (!(!Mod::get()->hasSavedValue("e01") && !Mod::get()->hasSavedValue("e02") && !Mod::get()->hasSavedValue("e03"))) {
             return ListenerResult::Propagate;
         }*/
@@ -106,8 +106,7 @@ $execute {
             step = 0;
         }
         auto size = CCDirector::sharedDirector()->getWinSize();
-        auto layer = e->getLayer();
-        int rand = e->getRandom();
+        int rand = layer->getRandom();
         log::debug("WE HOOKED THE SOGG!!! with rand of {}", rand);
         if (step == 2 && rand > 90) {
             step++;
@@ -207,5 +206,5 @@ $execute {
         buttonMenu->addChild(btn);
         layer->addChild(buttonMenu);
         return ListenerResult::Propagate;
-    });
+    }).leak();
 }

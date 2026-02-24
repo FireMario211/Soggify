@@ -17,7 +17,7 @@ class $modify(SoggifyHookML, MenuLayer) {
                 log::debug("forgetting emitter");
                 changedSetting = false;
                 s_emitter->removeFromParentAndCleanup(true);
-                SceneManager::get()->forget(s_emitter);
+                OverlayManager::get()->removeChildByID("emitter"_spr);
                 s_emitter = nullptr;
                 return createParticle(enable);
             }
@@ -75,7 +75,8 @@ class $modify(SoggifyHookML, MenuLayer) {
         s_emitter->setZOrder(CCScene::get()->getHighestChildZ() + 1);
         s_emitter->setPosition({winSize.width / 2, winSize.height + 20});
         s_emitter->setVisible(enable);
-        SceneManager::get()->keepAcrossScenes(s_emitter);
+        s_emitter->setID("emitter"_spr);
+        OverlayManager::get()->addChild(s_emitter);
     }
     bool init() {
         bool enableSogButtons = Mod::get()->hasSavedValue("i_3") && Mod::get()->getSavedValue<bool>("i_3");
@@ -115,13 +116,13 @@ class $modify(SoggifyHookML, MenuLayer) {
 };
 
 $execute {
-    listenForSettingChanges("sog-rain-count", [](int value) {
+    listenForSettingChanges<bool>("sog-rain-count", [](int value) {
         changedSetting = true;
     });
-    listenForSettingChanges("sog-rain-gravity", [](int value) {
+    listenForSettingChanges<bool>("sog-rain-gravity", [](int value) {
         changedSetting = true;
     });
-    listenForSettingChanges("sog-rain-scale", [](int value) {
+    listenForSettingChanges<bool>("sog-rain-scale", [](int value) {
         changedSetting = true;
     });
 }

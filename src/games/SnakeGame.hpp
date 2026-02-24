@@ -40,7 +40,7 @@ class SnakeGame : public Game {
             }
         }
 #endif
-        void keyDown(cocos2d::enumKeyCodes key) override;
+        void keyDown(cocos2d::enumKeyCodes key, double) override;
         cocos2d::CCPoint getPos(uint8_t x, uint8_t y);
         cocos2d::CCPoint getPos(cocos2d::CCPoint pos) {
             return getPos(pos.x, pos.y);

@@ -1,14 +1,14 @@
 {
-	"geode": "4.10.0",
+	"geode": "5.0.0",
 	"gd": {
-		"win": "2.2074",
-		"mac": "2.2074",
-        "android": "2.2074",
-        "ios": "2.2074"
+		"win": "2.2081",
+		"mac": "2.2081",
+        "android": "2.2081",
+        "ios": "2.2081"
 	},
 	"id": "firee.soggify",
 	"name": "Soggify",
-	"version": "v1.0.0-beta.6",
+	"version": "v1.0.0-beta.7",
 	"developer": "Firee",
 	"description": "SOGs geometry dash",
 	"early-load": true,
@@ -38,7 +38,7 @@
 	},
 	"dependencies": {
 		"geode.node-ids": ">=v1.20.0",
-		"capeling.soggy-mod": ">=1.1.6"
+		"capeling.soggy-mod": ">=1.1.8"
 	},
 	"settings": {
 		"ery-mode": {

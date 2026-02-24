@@ -19,7 +19,8 @@ void QuestsPopup::regenNode(uint8_t i) {
     }
 }
 
-bool QuestsPopup::setup() {
+bool QuestsPopup::init() {
+    if (!Popup::init(420, 280)) return false;
     if (!Mod::get()->hasSavedValue("quests")) {
         auto allQuests_t = sogutils::getQuests();
         auto allQuests = (Mod::get()->hasSavedValue("i_8") && Mod::get()->getSavedValue<bool>("i_8")) ? allQuests_t : std::vector<Quest>(allQuests_t.begin(), allQuests_t.begin() + std::min(5, static_cast<int>(allQuests_t.size())));

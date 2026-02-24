@@ -85,7 +85,7 @@ void SnakeGame::updateColors() {
     }
 }
 
-void SnakeGame::keyDown(cocos2d::enumKeyCodes key) {
+void SnakeGame::keyDown(cocos2d::enumKeyCodes key, double ts) {
     if (key == enumKeyCodes::KEY_Left || key == enumKeyCodes::CONTROLLER_Left || key == enumKeyCodes::KEY_ArrowLeft || key == enumKeyCodes::KEY_A)
         return tryChangeDirection(Direction::LEFT);
     if (key == enumKeyCodes::KEY_Right || key == enumKeyCodes::CONTROLLER_Right || key == enumKeyCodes::KEY_ArrowRight || key == enumKeyCodes::KEY_D)
@@ -94,7 +94,7 @@ void SnakeGame::keyDown(cocos2d::enumKeyCodes key) {
         return tryChangeDirection(Direction::UP);
     if (key == enumKeyCodes::KEY_Down || key == enumKeyCodes::CONTROLLER_Down || key == enumKeyCodes::KEY_ArrowDown || key == enumKeyCodes::KEY_D)
         return tryChangeDirection(Direction::DOWN);
-    Game::keyDown(key);
+    Game::keyDown(key, ts);
 }
 
 void SnakeGame::tick(float dt) {

@@ -4,7 +4,8 @@
 
 bool Game::initGame(std::string name) {
     m_name = name;
-    if (this->initAnchored(380, 260)) {
+    if (!Popup::init(380, 260)) return false;
+    if (this->setup()) {
         this->autorelease();
         this->setTitle(name);
         Build<CCSprite>::createSpriteName("dailyLevelCorner_001.png").anchorPoint(0,1).flipY(true).parentAtPos(m_mainLayer, Anchor::TopLeft);

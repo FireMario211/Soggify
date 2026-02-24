@@ -1,3 +1,7 @@
+# v1.0.0-beta.7
+- update to 5.0.0
+- hopefully fix gamble bug with high points
+
 # v1.0.0-beta.6
 - added jitless support
 

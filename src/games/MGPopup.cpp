@@ -9,7 +9,8 @@
 //std::vector<std::string> s_games = {"Pong", "Snake", "Flappy Sog"};
 std::vector<std::string> s_games = {"Pong", "Snake", "Spin Wheel"}; // was going to add "Spin Wheel" but i ran out of time, so maybe if i have enough time idk
 
-bool MGPopup::setup() {
+bool MGPopup::init() {
+    if (!Popup::init(220, 160)) return false;
     this->setTitle("minigames!");
     //Build<CCMenu>::create().parent(m_mainLayer).store(m_gameMenu);
     

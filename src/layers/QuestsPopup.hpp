@@ -1,7 +1,7 @@
 #pragma once
-class QuestsPopup : public geode::Popup<>, public CurrencyRewardDelegate {
+class QuestsPopup : public geode::Popup, public CurrencyRewardDelegate {
     protected:
-        bool setup() override;
+        bool init() override;
     public:
         CurrencyRewardLayer* m_currencyRewardLayer;
         virtual void onClose(cocos2d::CCObject* sender) override;
@@ -13,7 +13,7 @@ class QuestsPopup : public geode::Popup<>, public CurrencyRewardDelegate {
         void regenNode(uint8_t index);
         static QuestsPopup* create() {
             auto ret = new QuestsPopup();
-            if (ret->initAnchored(420, 280)) {
+            if (ret->init()) {
                 ret->autorelease();
                 return ret;
             }

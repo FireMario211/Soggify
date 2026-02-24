@@ -47,8 +47,8 @@ class PongGame : public Game {
         void resetBall(bool serveToPlayer);
         void normalizeBallVelocityToSpeed();
         bool setup() override;
-        void keyDown(cocos2d::enumKeyCodes key) override;
-        void keyUp(cocos2d::enumKeyCodes key) override;
+        void keyDown(cocos2d::enumKeyCodes key, double) override;
+        void keyUp(cocos2d::enumKeyCodes key, double) override;
 
         void restart();
         void gameOver(bool);

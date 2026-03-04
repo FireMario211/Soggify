@@ -1,3 +1,6 @@
+# v1.0.0-beta.8
+- fix gamble integer overflow
+
 # v1.0.0-beta.7
 - update to 5.0.0
 - hopefully fix gamble bug with high points

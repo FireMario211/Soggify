@@ -166,13 +166,8 @@ void SpinWheelGame::onSpinComplete() {
     int sector = static_cast<int>(floorf((combined + eps) / sectorSize)) % m_rewards.size();
     if (sector < 0) sector += m_rewards.size();
     int rewardPercent = m_rewards[sector];
-    int reward = (int)std::llround(Mod::get()->getSavedValue<int>("points", 0) * rewardPercent / 100.0);
-    if (reward >= INT32_MAX) {
-        reward = 10;
-    }
-    if (reward <= -INT32_MAX) {
-        reward = -10;
-    }
+    int currPoints = std::min(Mod::get()->getSavedValue<int>("points", 0), INT_MAX / 100);
+    int reward = (int)std::llround(currPoints * rewardPercent / 100.0);
     log::debug("wheelRotRaw={} rot={} combined={} sectSize={} sect={}", m_container->getRotation(), rot, combined, sectorSize, sector);
     if (reward > 0) { // YOU WON
         if (rewardPercent >= 30) { // GOLD GOLD GOLD

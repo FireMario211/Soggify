@@ -26,7 +26,7 @@ jobs:
           target: ios
 
     name: ${{ matrix.config.name }}
-    runs-on: ${{ matrix.config.os }}
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -42,7 +42,6 @@ jobs:
     name: Package builds
     runs-on: ubuntu-latest
     needs: ['build']
-
     steps:
       - uses: geode-sdk/build-geode-mod-docker/merge@main
         with:

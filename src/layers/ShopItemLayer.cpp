@@ -85,7 +85,8 @@ bool ShopItemLayer::init(ShopItem item) {
         0.4f,
         170.F, { 0.0f, 0.5f },
         15.f,
-        false
+        false,
+        0
     );
     desc->colorAllCharactersTo({40, 40, 40});
     desc->setAnchorPoint({0, 1});

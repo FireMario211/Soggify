@@ -1,7 +1,7 @@
 // NOT AS EMPTY...
 #include <defs/utils.hpp>
 #include <Geode/modify/DialogLayer.hpp>
-#include <capeling.soggy-mod/include/Events.hpp>
+#include <capeling.soggy-mod/Events.hpp>
 using namespace geode::prelude;
 
 $on_mod(Loaded) {

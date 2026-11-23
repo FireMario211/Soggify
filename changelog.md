@@ -1,3 +1,7 @@
+# v1.0.0-beta.9
+- bump geode version
+- fix funny sprite bug
+
 # v1.0.0-beta.8
 - fix gamble integer overflow
 

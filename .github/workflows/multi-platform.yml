@@ -13,22 +13,17 @@ jobs:
       matrix:
         config:
         - name: Windows
-          os: windows-latest
-
-        - name: macOS
-          os: macos-latest
-
-        - name: iOS
-          os: macos-latest
-          target: iOS
-
+          target: win
+        - name: macOS (Intel)
+          target: macintel
+        - name: macOS (M1)
+          target: macm1
         - name: Android32
-          os: ubuntu-latest
-          target: Android32
-
+          target: android32
         - name: Android64
-          os: ubuntu-latest
-          target: Android64
+          target: android64
+        - name: iOS
+          target: ios
 
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
@@ -39,8 +34,8 @@ jobs:
       - name: Build the mod
         uses: geode-sdk/build-geode-mod@main
         with:
-          use-cpm-cache: false
-          combine: true
+          upload: true
+          sdk: 6.0.0-beta.2
           target: ${{ matrix.config.target }}
 
   package:
@@ -49,10 +44,6 @@ jobs:
     needs: ['build']
 
     steps:
-      - uses: geode-sdk/build-geode-mod/combine@main
-        id: build
-
-      - uses: actions/upload-artifact@v4
+      - uses: geode-sdk/build-geode-mod-docker/merge@main
         with:
-          name: Build Output
-          path: ${{ steps.build.outputs.build-output }}
+          upload: true

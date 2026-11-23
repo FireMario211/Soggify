@@ -46,11 +46,12 @@ class $modify(LSLCustom, LevelSearchLayer) {
     }
 };
 
+#warning "Jumpscare is broken"
 class $modify(LBLCustom, LevelBrowserLayer) {
     void step1() {
         if (auto levelCell = typeinfo_cast<LevelCell*>(m_list->m_listView->m_tableView->m_contentLayer->getChildren()->objectAtIndex(0))) {
             log::debug("Found level, going now...");
-            levelCell->onClick(nullptr);
+            levelCell->onClick(this);
         }
     }
     void loadLevelsFinished(cocos2d::CCArray *p0, const char *p1, int p2) {

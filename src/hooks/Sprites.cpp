@@ -13,8 +13,11 @@ class $modify(SoggifyCCSprite, CCSprite) {
         if (std::string(name).starts_with("firee.soggify")) return ret;
         if (std::string(name).starts_with("GJ_gradient")) {
             // probably a bad idea but whatevs!
-            Loader::get()->queueInMainThread([ret]() {
-                sogutils::sog(ret, {0, 0}, ret->getColor());
+            Loader::get()->queueInMainThread([ret = WeakRef(ret)]() {
+                auto spr = ret.lock();
+                if (spr) {
+                    sogutils::sog(spr, {0, 0}, spr->getColor());
+                }
             });
             return ret;
         }
